@@ -1,0 +1,98 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema dbEvento
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema dbEvento
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `dbEvento` DEFAULT CHARACTER SET utf8 ;
+USE `dbEvento` ;
+
+-- -----------------------------------------------------
+-- Table `dbEvento`.`TB_EVENTO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dbEvento`.`TB_EVENTO` (
+  `CODIGO_EVENTO` INT NOT NULL AUTO_INCREMENT,
+  `DESCRICAO` VARCHAR(60) NOT NULL,
+  `TIPO` VARCHAR(30) NOT NULL,
+  `DATA_INICIO` DATE NOT NULL,
+  `DATA_FIM` DATE NULL,
+  PRIMARY KEY (`CODIGO_EVENTO`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbEvento`.`TB_PESSOA`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dbEvento`.`TB_PESSOA` (
+  `CODIGO_PESSOA` INT NOT NULL AUTO_INCREMENT,
+  `CPF` VARCHAR(14) NOT NULL,
+  `NOME` VARCHAR(45) NOT NULL,
+  `SEXO` VARCHAR(10) NOT NULL,
+  `ESTADO_CIVIL` VARCHAR(10) NOT NULL,
+  `DATA_NASCIMENTO` DATE NOT NULL,
+  `IGREJA` VARCHAR(60) NOT NULL,
+  `ORGANIZACAO` VARCHAR(45) NOT NULL,
+  `TELEFONE` VARCHAR(12) NOT NULL,
+  `CELULAR` VARCHAR(12) NOT NULL,
+  `ENDERECO` VARCHAR(30) NOT NULL,
+  `NUMERO` VARCHAR(6) NOT NULL,
+  `BAIRRO` VARCHAR(25) NOT NULL,
+  `CIDADE` VARCHAR(25) NOT NULL,
+  `ESTADO` VARCHAR(25) NOT NULL,
+  `CEP` VARCHAR(10) NOT NULL,
+  `EMAIL` VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`CODIGO_PESSOA`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbEvento`.`TB_INSCRICAO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dbEvento`.`TB_INSCRICAO` (
+  `CODIGO_INSCRICAO` INT NOT NULL AUTO_INCREMENT,
+  `CODIGO_PESSOA` INT NOT NULL,
+  `TIPO` VARCHAR(25) NOT NULL,
+  `VALOR` VARCHAR(15) NOT NULL,
+  `STATUS` VARCHAR(25) NOT NULL,
+  `DATA_INSCRICAO` DATE NOT NULL,
+  PRIMARY KEY (`CODIGO_INSCRICAO`),
+  INDEX `fk_TB_INSCRICAO_TB_PESSOA_idx` (`CODIGO_PESSOA` ASC),
+  CONSTRAINT `fk_TB_INSCRICAO_TB_PESSOA`
+    FOREIGN KEY (`CODIGO_PESSOA`)
+    REFERENCES `dbEvento`.`TB_PESSOA` (`CODIGO_PESSOA`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbEvento`.`TB_ITEM_INSCRICAO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dbEvento`.`TB_ITEM_INSCRICAO` (
+  `CODIGO_EVENTO` INT NOT NULL,
+  `CODIGO_INSCRICAO` INT NOT NULL,
+  PRIMARY KEY (`CODIGO_EVENTO`, `CODIGO_INSCRICAO`),
+  INDEX `fk_TB_ITEM_INSCRICAO_TB_INSCRICAO1_idx` (`CODIGO_INSCRICAO` ASC),
+  CONSTRAINT `fk_TB_ITEM_INSCRICAO_TB_EVENTO1`
+    FOREIGN KEY (`CODIGO_EVENTO`)
+    REFERENCES `dbEvento`.`TB_EVENTO` (`CODIGO_EVENTO`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_ITEM_EMPRESTIMO_TB_EMPRESTIMO1`
+    FOREIGN KEY (`CODIGO_INSCRICAO`)
+    REFERENCES `dbEvento`.`TB_INSCRICAO` (`CODIGO_INSCRICAO`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
