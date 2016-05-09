@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="pessoaModule">
+<head>
+	<meta-charset="utf-8">
+	<title>Pessoa</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="control/pessoaControl.js"></script>
+</head>
+<body ng-controller="pessoaControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de pessoa</div>
+		<div class="panel-body">
+			<div>
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active">
+			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					<br>
+					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
+					<hr/>
+			    	<form>
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="number" disabled="true" class="form-control" ng-model="pessoa.codigo" placeholder="Codigo">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputNome">Nome</label>
+					    <input type="text" class="form-control" ng-model="pessoa.nome" placeholder="Insira o Nome">
+					  </div>
+					  
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputCargo">Cargo</label>
+					    <input type="text" class="form-control" ng-model="pessoa.cargo" placeholder="Insira o Cargo">
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputEndereco">Endereco</label>
+					    <input type="text" class="form-control" ng-model="pessoa.endereco" placeholder="Insira o Endereco">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputCidade">Cidade</label>
+					    <input type="text" class="form-control" ng-model="pessoa.cidade" placeholder="Insira a Cidade">
+					  </div>
+
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCep">Cep</label>
+					    <input type="text" class="form-control" ng-model="pessoa.cep" placeholder="Insira o Cep">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputPais">Pais</label>
+					    <input type="text" class="form-control" ng-model="pessoa.pais" placeholder="Insira o Pais">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputTelefone">Telefone</label>
+					    <input type="text" class="form-control" ng-model="pessoa.telefone" placeholder="Insira o Telefone">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputFax">Fax</label>
+					    <input type="text" class="form-control" ng-model="pessoa.fax" placeholder="Insira o Fax">
+					  </div>
+					</form>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="dados">
+				<br>
+				<input type="text" class="form-control" ng-model="criterio" 
+				placeholder="O que voce esta procurando?" /><br>
+			    	<table class="table table-hover">
+			    		<th>Código</th><th>CPF</th><th>Nome</th><th>Sexo</th><th>Estado Civil</th><th>Data de Nascimento</th><th>Igreja</th><th>Organização</th><th>Telefone</th><th>Celular</th><th>Endereco</th><th>Número</th><th>Complemento</th><th>Bairro</th><th>Cidade</th><th>Estado</th><th>CEP</th><th>E-mail</th>
+
+			    		<tr ng-repeat="pessoaTabela in pessoas | filter:criterio" ng-click="seleciona(pessoaTabela);">
+			    			<td>{{pessoaTabela.codigo}}</td><td>{{pessoaTabela.cpf}}</td><td>{{pessoaTabela.nome}}</td>
+			    			<td>{{pessoaTabela.sexo}}</td><td>{{pessoaTabela.estadoCivil}}</td><td>{{pessoaTabela.dataNascimento}}</td>
+			    			<td>{{pessoaTabela.igreja}}</td><td>{{pessoaTabela.organizacao}}</td><td>{{pessoaTabela.telefone}}</td>
+			    			<td>{{pessoaTabela.celular}}</td><td>{{pessoaTabela.endereco}}</td><td>{{pessoaTabela.numero}}</td>
+			    			<td>{{pessoaTabela.complemento}}</td><td>{{pessoaTabela.bairro}}</td><td>{{pessoaTabela.cidade}}</td>
+			    			<td>{{pessoaTabela.estado}}</td><td>{{pessoaTabela.cep}}</td><td>{{pessoaTabela.email}}</td>
+			    		</tr>
+					</table>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

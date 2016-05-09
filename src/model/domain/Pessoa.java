@@ -59,6 +59,9 @@ public class Pessoa implements Serializable {
 	@Column(name="NUMERO")
 	private String numero;
 
+	@Column(name="COMPLEMENTO")
+	private String complemento;
+
 	@Column(name="BAIRRO")
 	private String bairro;
 
@@ -175,6 +178,14 @@ public class Pessoa implements Serializable {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	public String getBairro() {
