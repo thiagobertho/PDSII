@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="inscricaoModule">
+<head>
+	<meta-charset="utf-8">
+	<title>Inscricao</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="control/inscricaoControl.js"></script>
+</head>
+<body ng-controller="inscricaoControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Inscricao</div>
+		<div class="panel-body">
+			<div>
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active">
+			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					<br>
+					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesquisar</button>
+					<hr/>
+			    	<form>
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="number" disabled="true" class="form-control" ng-model="inscricao.codigo" placeholder="Codigo">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputPessoa">Pessoa</label>
+					    <input type="text" class="form-control" ng-model="inscricao.pessoa" placeholder="Insira a Pessoa">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputTipo">Tipo</label>
+					    <input type="text" class="form-control" ng-model="inscricao.tipo" placeholder="Insira o Tipo">
+					  </div>
+					  
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputValor">Valor</label>
+					    <input type="text" class="form-control" ng-model="inscricao.valor" placeholder="Valor">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputStatus">Status</label>
+					    <input type="text" class="form-control" ng-model="inscricao.status" placeholder="Status">
+					  </div>
+					  
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputDataInscricao">Data inscricao</label>
+					    <input type="text" class="form-control" ng-model="inscricao.dataInscricao" placeholder="Data da Inscricao">
+					  </div>
+					</form>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="dados">
+				<br>
+				<input type="text" class="form-control" ng-model="criterio" 
+				placeholder="O que voce esta procurando?" /><br>
+			    	<table class="table table-hover">
+			    		<th>Código</th><th>Pessoa</th><th>Tipo</th><th>Valor</th><th>Status</th><th>Data da Inscrição</th>
+
+			    		<tr ng-repeat="inscricaoTabela in inscricoes | filter:criterio" ng-click="seleciona(inscricaoTabela);">
+			    			<td>{{inscricaoTabela.codigo}}</td><td>{{inscricaoTabela.pessoa}}</td><td>{{inscricaoTabela.tipo}}</td>
+			    			<td>{{inscricaoTabela.valor}}</td><td>{{inscricaoTabela.status}}</td><td>{{inscricaoTabela.dataInscricao}}</td>
+			    		</tr>
+					</table>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

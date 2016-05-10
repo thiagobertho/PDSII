@@ -31,7 +31,7 @@
 					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
 					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
 					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
+					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesquisar</button>
 					<hr/>
 			    	<form>
 					  <div class="form-group col-md-2">
@@ -39,24 +39,79 @@
 					    <input type="number" disabled="true" class="form-control" ng-model="pessoa.codigo" placeholder="Codigo">
 					  </div>
 					  
-					  <div class="form-group col-md-6">
+					  <div class="form-group col-md-3">
+					    <label for="exampleInputCPF">CPF</label>
+					    <input type="text" class="form-control" ng-model="pessoa.cpf" placeholder="Insira o CPF">
+					  </div>
+					  
+					  <div class="form-group col-md-5">
 					    <label for="exampleInputNome">Nome</label>
 					    <input type="text" class="form-control" ng-model="pessoa.nome" placeholder="Insira o Nome">
 					  </div>
 					  
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputCargo">Cargo</label>
-					    <input type="text" class="form-control" ng-model="pessoa.cargo" placeholder="Insira o Cargo">
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputSexo">Sexo</label>
+					    <input type="text" class="form-control" ng-model="pessoa.sexo" placeholder="Insira o Sexo">
 					  </div>
 
-					  <div class="form-group col-md-6">
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputEstadoCivil">Estado civil</label>
+					    <input type="text" class="form-control" ng-model="pessoa.estadoCivil" placeholder="Insira o Estado civil">
+					  </div>
+
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputDataNascimento">Data de Nascimento</label>
+					    <input type="text" class="form-control" ng-model="pessoa.dataNascimento" placeholder="dd/mm/aaaa">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputIgreja">Igreja</label>
+					    <input type="text" class="form-control" ng-model="pessoa.cargo" placeholder="Insira a Igreja">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputOrganizacao">Organização</label>
+					    <input type="text" class="form-control" ng-model="pessoa.organizacao" placeholder="Insira a Organizacao">
+					  </div>
+
+					  <div class="form-group col-md-3">
+					    <label for="exampleInputTelefone">Telefone</label>
+					    <input type="text" class="form-control" ng-model="pessoa.telefone" placeholder="Insira o Telefone: DDD + Numero">
+					  </div>
+
+					  <div class="form-group col-md-3">
+					    <label for="exampleInputCelular">Celular</label>
+					    <input type="text" class="form-control" ng-model="pessoa.celular" placeholder="Insira o Celular: DDD + Numero">
+					  </div>
+
+					  <div class="form-group col-md-4">
 					    <label for="exampleInputEndereco">Endereco</label>
 					    <input type="text" class="form-control" ng-model="pessoa.endereco" placeholder="Insira o Endereco">
 					  </div>
 
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputNumero">Numero</label>
+					    <input type="text" class="form-control" ng-model="pessoa.numero" placeholder="Insira o Numero">
+					  </div>
+
 					  <div class="form-group col-md-4">
+					    <label for="exampleInputComplemento">Complemento</label>
+					    <input type="text" class="form-control" ng-model="pessoa.complemento" placeholder="Insira o Complemento">
+					  </div>
+
+					  <div class="form-group col-md-3">
+					    <label for="exampleInputBairro">Bairro</label>
+					    <input type="text" class="form-control" ng-model="pessoa.bairro" placeholder="Insira o Bairro">
+					  </div>
+
+					  <div class="form-group col-md-3">
 					    <label for="exampleInputCidade">Cidade</label>
 					    <input type="text" class="form-control" ng-model="pessoa.cidade" placeholder="Insira a Cidade">
+					  </div>
+
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputEstado">Estado</label>
+					    <input type="text" class="form-control" ng-model="pessoa.estado" placeholder="Insira o Estado">
 					  </div>
 
 					  <div class="form-group col-md-2">
@@ -64,19 +119,9 @@
 					    <input type="text" class="form-control" ng-model="pessoa.cep" placeholder="Insira o Cep">
 					  </div>
 
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputPais">Pais</label>
-					    <input type="text" class="form-control" ng-model="pessoa.pais" placeholder="Insira o Pais">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputTelefone">Telefone</label>
-					    <input type="text" class="form-control" ng-model="pessoa.telefone" placeholder="Insira o Telefone">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputFax">Fax</label>
-					    <input type="text" class="form-control" ng-model="pessoa.fax" placeholder="Insira o Fax">
+					  <div class="form-group col-md-5">
+					    <label for="exampleInputEmail">E-mail</label>
+					    <input type="text" class="form-control" ng-model="pessoa.email" placeholder="Insira o E-mail">
 					  </div>
 					</form>
 			    </div>
